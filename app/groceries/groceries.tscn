@@ -1,0 +1,271 @@
+[gd_scene load_steps=16 format=3 uid="uid://dcef3xj2q2m2t"]
+
+[ext_resource type="Script" path="res://app/groceries/groceries.gd" id="1_4ahdk"]
+[ext_resource type="StyleBox" uid="uid://bopcnajs7khhk" path="res://resources/control.stylebox" id="2_yqh28"]
+[ext_resource type="Texture2D" uid="uid://bc2846xfd75dy" path="res://resources/tabler--arrow-back-up.svg" id="3_arhr1"]
+[ext_resource type="Script" path="res://components/Animator.gd" id="4_up0iu"]
+[ext_resource type="Script" path="res://components/groceries/add_ribbon.gd" id="5_sukan"]
+[ext_resource type="StyleBox" uid="uid://cyndrhe37c4np" path="res://resources/main-input.tres" id="6_kgphd"]
+[ext_resource type="Script" path="res://components/groceries/menu_button.gd" id="7_6w4up"]
+[ext_resource type="Script" path="res://components/database.gd" id="8_762q4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i0yv"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="SystemFont" id="SystemFont_2rivv"]
+font_names = PackedStringArray("Poppins", "", "")
+font_weight = 700
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oj57p"]
+bg_color = Color(0, 0, 0, 0.2)
+border_width_left = 5
+border_color = Color(0.4578, 0.0756, 0.84, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_detail = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6a11j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_up3h1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hadae"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvykv"]
+bg_color = Color(0, 0, 0, 0.2)
+border_width_left = 5
+border_color = Color(0.4578, 0.0756, 0.84, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_detail = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[node name="purchases_view" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ahdk")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00173611
+anchor_right = 1.0
+anchor_bottom = 0.998457
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_yqh28")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="goback" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_5i0yv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5i0yv")
+icon = ExtResource("3_arhr1")
+expand_icon = true
+
+[node name="Animator" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/goback"]
+script = ExtResource("4_up0iu")
+to_color = Color(0, 0, 0, 0.2)
+transition_type = 8
+themes_to_animate = Array[String](["normal", "hover", "pressed"])
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = SubResource("SystemFont_2rivv")
+theme_override_font_sizes/font_size = 29
+text = "MANAGE YOUR GROCERIES!"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+
+[node name="grocery-list" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+
+[node name="add-ribbon" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 25
+script = ExtResource("5_sukan")
+metadata/_edit_use_anchors_ = true
+
+[node name="name" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon" node_paths=PackedStringArray("shortcut_context")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.85
+focus_next = NodePath("../time")
+focus_previous = NodePath("../add")
+focus_mode = 1
+shortcut_context = NodePath("..")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = ExtResource("6_kgphd")
+theme_override_styles/read_only = ExtResource("6_kgphd")
+theme_override_styles/normal = ExtResource("6_kgphd")
+placeholder_text = "Enter in today grocery"
+
+[node name="Animator" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/name"]
+script = ExtResource("4_up0iu")
+to_color = Color(0, 0, 0, 0.337255)
+transition_type = 7
+themes_to_animate = Array[String](["normal"])
+
+[node name="time" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon" node_paths=PackedStringArray("shortcut_context")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.85
+focus_next = NodePath("../price")
+focus_previous = NodePath("../name")
+focus_mode = 1
+shortcut_context = NodePath("..")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = ExtResource("6_kgphd")
+theme_override_styles/read_only = ExtResource("6_kgphd")
+theme_override_styles/normal = ExtResource("6_kgphd")
+placeholder_text = "TT:TT:TT"
+
+[node name="Animator" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/time"]
+script = ExtResource("4_up0iu")
+to_color = Color(0, 0, 0, 0.337255)
+transition_type = 7
+themes_to_animate = Array[String](["normal"])
+
+[node name="price" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_previous = NodePath("../name")
+theme_override_styles/panel = SubResource("StyleBoxFlat_oj57p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/price"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/price/HBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../MenuButton")
+focus_previous = NodePath("../../../time")
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6a11j")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_up3h1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hadae")
+placeholder_text = "Price"
+
+[node name="MenuButton" type="MenuButton" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/price/HBoxContainer"]
+layout_mode = 2
+text = "PKR"
+item_count = 2
+popup/item_0/text = "PKR"
+popup/item_0/checked = true
+popup/item_1/text = "USD"
+popup/item_1/id = 1
+script = ExtResource("7_6w4up")
+
+[node name="Animator2" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/price"]
+script = ExtResource("4_up0iu")
+to_color = Color(0, 0, 0, 0.337255)
+transition_type = 7
+
+[node name="amount" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_previous = NodePath("../name")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvykv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/amount"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/amount/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6a11j")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_up3h1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hadae")
+placeholder_text = "Amount"
+
+[node name="MenuButton" type="MenuButton" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/amount/HBoxContainer"]
+layout_mode = 2
+text = "Kilogram"
+item_count = 3
+popup/item_0/text = "Dozen"
+popup/item_0/checked = true
+popup/item_1/text = "Single"
+popup/item_1/id = 1
+popup/item_2/text = "Kilogram"
+popup/item_2/id = 2
+script = ExtResource("7_6w4up")
+
+[node name="Animator2" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/amount"]
+script = ExtResource("4_up0iu")
+to_color = Color(0, 0, 0, 0.337255)
+transition_type = 7
+
+[node name="add" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/add-ribbon"]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_next = NodePath("../name")
+theme_override_font_sizes/font_size = 25
+text = " ➕ "
+
+[node name="Database" type="Node" parent="."]
+script = ExtResource("8_762q4")
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/goback" to="." method="_on_goback_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/name" to="." method="_on_name_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/name" to="." method="_on_name_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/time" to="." method="_on_name_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/time" to="." method="_on_name_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/add-ribbon/add" to="." method="_on_add_pressed"]

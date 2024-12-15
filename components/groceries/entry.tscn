@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7r41vtb0nqer"]
+
+[ext_resource type="Script" path="res://components/groceries/entry.gd" id="1_oow6w"]
+[ext_resource type="StyleBox" uid="uid://cm86byfyhx64s" path="res://resources/button.stylebox" id="2_04grw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80ljy"]
+bg_color = Color(0.1265, 0.11, 0.2, 1)
+border_color = Color(0.4074, 0.238, 0.7, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge504"]
+bg_color = Color(0.6, 0.114, 0.1221, 1)
+
+[node name="Node2D" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 2.0
+offset_bottom = 44.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_80ljy")
+script = ExtResource("1_oow6w")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="time" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.620167, 0.620167, 0.620167, 1)
+theme_override_font_sizes/font_size = 15
+text = "Time-Added"
+
+[node name="name" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "Grocery Name"
+
+[node name="amount" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "Amount"
+
+[node name="price" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "price"
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("2_04grw")
+theme_override_styles/hover = ExtResource("2_04grw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ge504")
+theme_override_styles/normal = ExtResource("2_04grw")
+text = "X"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

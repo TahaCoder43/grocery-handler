@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://bosix8tje75ce"]
+
+[ext_resource type="Script" path="res://components/day.gd" id="1_utxf6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80ljy"]
+bg_color = Color(0.1265, 0.11, 0.2, 1)
+border_color = Color(0.4074, 0.238, 0.7, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.333333)
+shadow_size = 8
+shadow_offset = Vector2(-3, 5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtw7m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a7ygu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qicmg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgl36"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjs4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjgke"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imk2p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxrbf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_671qn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tpsjo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rd00y"]
+
+[node name="Node2D" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 150.0
+offset_bottom = 50.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_80ljy")
+script = ExtResource("1_utxf6")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vtw7m")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_a7ygu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qicmg")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wgl36")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_yjs4i")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pjgke")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_imk2p")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_sxrbf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_671qn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tpsjo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rd00y")
+
+[node name="MarginContainer" type="MarginContainer" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="day" type="Label" parent="Button/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.823529)
+theme_override_font_sizes/font_size = 23
+text = "Day ##"
+
+[node name="spenditure" type="Label" parent="Button/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(1, 1, 1, 0.560784)
+theme_override_font_sizes/font_size = 15
+text = "spent"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

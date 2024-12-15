@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://1caed77rr3sf"]
+
+[ext_resource type="Script" path="res://app/app.gd" id="1_3l6d4"]
+[ext_resource type="Script" path="res://components/database.gd" id="2_m4avx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfp70"]
+bg_color = Color(0.16448, 0.1632, 0.24, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_bflee"]
+font_names = PackedStringArray("Poppins", "", "")
+font_weight = 700
+
+[node name="days_view" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3l6d4")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00173611
+anchor_right = 1.0
+anchor_bottom = 0.998457
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wfp70")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_bflee")
+theme_override_font_sizes/font_size = 29
+text = "MANAGE YOUR GROCERIES!"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="months" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Database" type="Node" parent="."]
+script = ExtResource("2_m4avx")
